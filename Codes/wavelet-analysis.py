@@ -18,7 +18,6 @@ def load_tide_data(tide_file):
     return pd.read_csv(tide_file, parse_dates=['Time'])
 
 def wavelet_analysis(data, location, river_data, tide_data):
-    # Ensure output directory exists
     os.makedirs(f'wavelet_analysis_{location}', exist_ok=True)
     
     # Merge with river and tide data
@@ -111,20 +110,20 @@ def wavelet_analysis(data, location, river_data, tide_data):
         plt.close()
 
 # Load data
-file_paths = [f'P{i}.txt' for i in range(1, n+1)]  # Assuming n locations
+file_paths = [f'P{i}.txt' for i in range(1, n+1)]  
 river_files = [f'R{i}.csv' for i in range(1, 6)]
 tide_file = 'Tide.csv'
 
 river_data = load_river_data(river_files)
 tide_data = load_tide_data(tide_file)
 
-# Run wavelet analysis for each location
+# Run wavelet analysis 
 for path in file_paths:
     data = load_data(path)
     location = data['Location'].iloc[0]
     wavelet_analysis(data, location, river_data, tide_data)
 
-# Comparative analysis across locations
+# Comparative analysis 
 variables = ['SAL', 'TEMP', 'V_x', 'V_y']
 wavelet = 'cmor1.5-1.0'
 scales = np.arange(1, 129)
