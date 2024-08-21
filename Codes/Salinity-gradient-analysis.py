@@ -21,7 +21,6 @@ def calculate_distance(x1, y1, x2, y2):
     return np.sqrt((x2 - x1)**2 + (y2 - y1)**2)
 
 def salinity_gradient_analysis(data_list, river_data, tide_data):
-    # Ensure output directory exists
     os.makedirs('salinity_gradient_analysis', exist_ok=True)
     
     # Combine all location data
