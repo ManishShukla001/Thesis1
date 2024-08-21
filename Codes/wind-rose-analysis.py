@@ -3,16 +3,16 @@ import matplotlib.pyplot as plt
 from windrose import WindroseAxes
 import numpy as np
 
-# Read the Excel file
+
 df = pd.read_excel('P1_data.xlsx')
 
-# Convert 'Date' column to datetime
+
 df['Date'] = pd.to_datetime(df['Date'])
 
-# Extract year from the 'Date' column
+
 df['Year'] = df['Date'].dt.year
 
-# Function to create wind rose diagram
+# wind rose diagram
 def create_windrose(data, year):
     wind_speed = data['v10']  # Assuming 'v10' is wind speed
     wind_dir = data['u10']    # Assuming 'u10' is wind direction
