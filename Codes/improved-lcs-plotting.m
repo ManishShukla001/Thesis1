@@ -37,7 +37,7 @@ title('LCS Results', 'FontSize', 16)
 % Optional: Add grid lines
 grid on
 
-% Uncomment the following lines if you want to add scatter plot
+% add scatter plot
 % hold on
 % s = scatter(filx, fily, 'filled');
 % s.LineWidth = 0.1;
