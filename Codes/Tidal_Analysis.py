@@ -5,16 +5,16 @@ from scipy.signal import correlate
 from scipy.fft import fft, fftfreq
 import utide
 
-# Load the data
+
 data = pd.read_csv('Tidalpropagation2.txt', delimiter='\t')
 
-# Convert Time column to datetime format
+
 data['Time'] = pd.to_datetime(data['Time'], format='%d-%m-%Y %H:%M')
 
-# Set Time as the index
+
 data.set_index('Time', inplace=True)
 
-# Fill missing values if any
+
 data = data.interpolate()
 
 # Time series plots
@@ -64,7 +64,6 @@ plt.title('c) Phase Difference Analysis')
 plt.show()
 
 # Tidal propagation speed
-# Convert the distance to kilometers
 distance_km = 43872 / 1000  # Convert meters to kilometers
 # Use the absolute value of the time lag
 propagation_speed = distance_km / abs(lag)  # km/hour
@@ -80,7 +79,7 @@ def analyze_tidal_constituents(data, location, latitude):
     coef = utide.solve(data.index.to_pydatetime(), data[location].values, lat=latitude)
     return coef
 
-latitude = 0.1  # Small value for latitude to avoid equator issues
+latitude = 0.1  
 
 constituents_loc1 = analyze_tidal_constituents(data, 'WS_Loc1', latitude)
 constituents_loc2 = analyze_tidal_constituents(data, 'WS_Loc2', latitude)
