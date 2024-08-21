@@ -18,7 +18,6 @@ def load_tide_data(tide_file):
     return pd.read_csv(tide_file, parse_dates=['Time'])
 
 def spectral_analysis(data, location, river_data, tide_data):
-    # Ensure output directory exists
     os.makedirs(f'spectral_analysis_{location}', exist_ok=True)
     
     # Merge with river and tide data
