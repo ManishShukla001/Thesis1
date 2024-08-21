@@ -16,7 +16,6 @@ def load_river_data(river_files):
 def load_tide_data(tide_file):
     return pd.read_csv(tide_file, parse_dates=['Time'])
 def mixing_diagram_analysis(data_list, river_data, tide_data):
-    # Ensure output directory exists
     os.makedirs('mixing_diagram_analysis', exist_ok=True)
     # Combine all location data
     combined_data = pd.concat(data_list, keys=range(len(data_list)))
